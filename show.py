@@ -7,16 +7,16 @@ from pylife.useful import unwrap
 from back_functions import test_time, test_end_user, convert_data_to_excel, generate_qrcode
 import pandas as pd
 
-def show_raw_data(username, end_user, date, start_time, end_time, timezone):
+def show_raw_data(username, end_user, date, start_time, end_time, timezone_option):
     
     test_time(start_time, end_time)
     test_end_user(end_user)
     
-    if timezone == 'France (Winter Time)':
+    if timezone_option == 'France (Winter Time)':
         time_zone       = 'CET'
-    elif timezone == 'France (Summer Time)':
+    elif timezone_option == 'France (Summer Time)':
         time_zone       = 'CEST'    
-    elif timezone == 'GMT':
+    elif timezone_option == 'GMT':
         time_zone       = 'GMT'
         
     start_time      += ':00'

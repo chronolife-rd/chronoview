@@ -86,12 +86,12 @@ with st.container():
         # User ID input
         data_user = col4_data_form.text_input("🏃🏼‍♂️ User ID","5P4svk")
         # Timezone
-        timezone = col5_data_form.selectbox('Select Timezone',
+        timezone_option = col5_data_form.selectbox('Select Timezone',
                               ('France (Winter Time)', 'France (Summer Time)', 'GMT'))
         # Show button
         data_request = data_form.form_submit_button("Show")
         # code_id, datas, paramsI =  request_indicators(data_user, date)
-        show_raw_data(username, data_user, date, start_time, end_time, timezone)
+        show_raw_data(username, data_user, date, start_time, end_time, timezone_option)
         data_form.success("Data has been successfully requested")
         
     else:
