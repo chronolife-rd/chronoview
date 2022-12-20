@@ -7,12 +7,18 @@ from pylife.useful import unwrap
 from back_functions import test_time, test_end_user, convert_data_to_excel, generate_qrcode
 import pandas as pd
 
-def show_raw_data(username, end_user, date, start_time, end_time):
+def show_raw_data(username, end_user, date, start_time, end_time, timezone):
     
     test_time(start_time, end_time)
     test_end_user(end_user)
     
-    time_zone       = 'CET'
+    if timezone == 'France (Winter Time)':
+        time_zone       = 'CET'
+    elif timezone == 'France (Summer Time)':
+        time_zone       = 'CEST'    
+    elif timezone == 'GMT':
+        time_zone       = 'GMT'
+        
     start_time      += ':00'
     end_time        += ':00'
     from_datetime   = str(date) + " " + start_time

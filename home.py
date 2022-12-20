@@ -79,16 +79,19 @@ with st.container():
         data_form = st.form("data_form")
         col1_data_form, col2_data_form, col3_data_form, col4_data_form, col5_data_form = data_form.columns([1,1,1,1,1])
         # Date picker
-        date = col1_data_form.date_input("🗓️ Select date:", max_value=dt.now(), key="ksd")
+        date = col1_data_form.date_input("🗓️ Select date", max_value=dt.now(), key="ksd")
         # Time picker
         start_time = col2_data_form.text_input("Start time HH:MM", "22:22")
         end_time = col3_data_form.text_input("End time HH:MM", "22:23")
         # User ID input
         data_user = col4_data_form.text_input("🏃🏼‍♂️ User ID","5P4svk")
+        # Timezone
+        timezone = col5_data_form.selectbox('Select Timezone',
+                              ('France (Winter Time)', 'France (Summer Time)', 'GMT'))
         # Show button
         data_request = data_form.form_submit_button("Show")
         # code_id, datas, paramsI =  request_indicators(data_user, date)
-        show_raw_data(username, data_user, date, start_time, end_time)
+        show_raw_data(username, data_user, date, start_time, end_time, timezone)
         data_form.success("Data has been successfully requested")
         
     else:
