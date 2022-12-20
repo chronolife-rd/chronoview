@@ -113,7 +113,7 @@ def show_raw_data(username, end_user, date, start_time, end_time, timezone_optio
     # ------------------------------------------------------------------------
     
     filt_expender = st.expander("Filtered Data", expanded=False)
-    fig = make_subplots(rows=3, cols=1, shared_xaxes=True, 
+    fig = make_subplots(rows=5, cols=1, shared_xaxes=True, 
                         subplot_titles=('ECG',  'Abdominal Breath', 'Thoracic Breath',
                                         'Temperatures', 'Accelerations')
                         )
@@ -131,7 +131,27 @@ def show_raw_data(username, end_user, date, start_time, end_time, timezone_optio
                         mode='lines',
                         name='Thoracic respiration'),
                            row=3, col=1)
-    
+    fig.add_trace(go.Scatter(x=unwrap(al.temp_1.times_), y=unwrap(al.temp_1.sig_),
+                             mode='lines',
+                             name='Right Temperature'),
+                  row=4, col=1,
+                  )
+    fig.add_trace(go.Scatter(x=unwrap(al.temp_2.times_), y=unwrap(al.temp_2.sig_),
+                        mode='lines',
+                        name='Left Temperature'),
+                        row=4, col=1)
+    fig.add_trace(go.Scatter(x=unwrap(al.accx.times_), y=unwrap(al.accx.sig_),
+                        mode='lines',
+                        name='Accx'),
+                        row=5, col=1)
+    fig.add_trace(go.Scatter(x=unwrap(al.accy.times_), y=unwrap(al.accy.sig_),
+                        mode='lines',
+                        name='Accy'),
+                        row=5, col=1)
+    fig.add_trace(go.Scatter(x=unwrap(al.accz.times_), y=unwrap(al.accz.sig_),
+                        mode='lines',
+                        name='Accz'),
+                        row=5, col=1)
     fig.update_layout(width=500, height=750)
     filt_expender.plotly_chart(fig, True)
     
