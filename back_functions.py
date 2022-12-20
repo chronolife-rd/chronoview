@@ -75,6 +75,20 @@ def remove_credentials(username):
     os.rmdir(path_creds)
     
 
+def test_end_user(end_user):
+    
+    message = False
+    
+    if end_user == "":
+        message = "End User ID is empty"
+        st.error(message)
+        st.stop()
+        
+    if len(end_user) != 6:
+        message = "End User ID is incorrect"
+        st.error(message)
+        st.stop()
+    
 def test_time(start_time, end_time):
     message = False
     

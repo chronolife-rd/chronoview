@@ -4,12 +4,13 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from back_functions import get_data
 from pylife.useful import unwrap
-from back_functions import test_time, convert_data_to_excel, generate_qrcode
+from back_functions import test_time, test_end_user, convert_data_to_excel, generate_qrcode
 import pandas as pd
 
 def show_raw_data(username, end_user, date, start_time, end_time):
     
     test_time(start_time, end_time)
+    test_end_user(end_user)
     
     time_zone       = 'CET'
     start_time      += ':00'
